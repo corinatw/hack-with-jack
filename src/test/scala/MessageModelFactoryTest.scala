@@ -27,14 +27,14 @@ class MessageModelFactoryTest extends AnyWordSpec with Matchers {
     "do not send phone details" when {
       "isPhoneIncluded is false" in {
         val messageModelFactory = new MessageModelFactory()
-        val contactRequest = ContactRequest("dummy")
+        val contactRequest = ContactRequest("dummy", None)
         val expectedMessage = messageModelFactory.sendMessage(contactRequest, false).get
         expectedMessage.phone shouldBe None
       }
 
       "isPhoneIncluded is true" in {
         val messageModelFactory = new MessageModelFactory()
-        val contactRequest = ContactRequest("dummy")
+        val contactRequest = ContactRequest("dummy", None)
         val expectedMessage = messageModelFactory.sendMessage(contactRequest, true).get
         expectedMessage.phone shouldBe None
       }
