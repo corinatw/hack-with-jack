@@ -1,5 +1,7 @@
 package edition1
 
+import resources.input.PhoneData
+
 case class Phone(model: Option[String] = None, color: Option[String] = None, isAccessories: Option[Boolean] = None) {
 
   def displayText(): String = {
@@ -16,5 +18,11 @@ case class Phone(model: Option[String] = None, color: Option[String] = None, isA
     }
 
     defaultText + modelPhoneFinal
+  }
+}
+
+object Phone {
+  def of(phonedata: Option[PhoneData]): Unit ={
+    phonedata.flatMap(phone => Some(Phone(phone.model, phone.color, phone.accessories)))
   }
 }
